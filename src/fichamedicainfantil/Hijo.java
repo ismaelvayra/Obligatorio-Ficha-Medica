@@ -18,9 +18,9 @@ public class Hijo {
     @DatabaseField(id = true)
     private int idHijo;
     @DatabaseField
-    private String nombre;
+    private String nombreHijo;
     @DatabaseField
-    private String apellido;
+    private String apellidoHijo;
     @DatabaseField
     private float peso;
     @DatabaseField
@@ -34,26 +34,26 @@ public class Hijo {
     @DatabaseField
     private String patologia;
     @DatabaseField
-    private Padre progenitor;
+    private Padre padre;
 
     public Hijo() {
     }
     
 
     public String getNombre() {
-        return nombre;
+        return nombreHijo;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombreHijo = nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return apellidoHijo;
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        this.apellidoHijo = apellido;
     }
 
     public float getPeso() {

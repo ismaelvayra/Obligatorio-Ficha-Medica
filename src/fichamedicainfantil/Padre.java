@@ -18,11 +18,11 @@ public class Padre {
     @DatabaseField(id = true)
     private int idPadre;
     @DatabaseField
-    private String nombre;
+    private String nombrePadre;
     @DatabaseField
-    private String apellido;
+    private String apellidoPadre;
     @DatabaseField
-    private String genero;
+    private String generoPadre;
     @DatabaseField
     private Hijo hijo;
 
@@ -37,27 +37,27 @@ public class Padre {
     }
 
     public String getNombre() {
-        return nombre;
+        return nombrePadre;
     }
 
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombrePadre = nombre;
     }
 
     public String getApellido() {
-        return apellido;
+        return apellidoPadre;
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        this.apellidoPadre = apellido;
     }
 
     public String getGenero() {
-        return genero;
+        return generoPadre;
     }
 
     public void setGenero(String genero) {
-        this.genero = genero;
+        this.generoPadre = genero;
     }
 
     public Hijo getHijo() {
