@@ -10,6 +10,11 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import fichamedicainfantil.modelos.Consulta;
+import fichamedicainfantil.modelos.Hijo;
+import fichamedicainfantil.modelos.Padre;
+import fichamedicainfantil.modelos.Vacuna;
+
 import java.sql.SQLException;
 
 /**
