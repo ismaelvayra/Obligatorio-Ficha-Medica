@@ -1,4 +1,4 @@
-package fichamedicainfantil.test;
+package fichamedicainfantil.test.testModulos;
 
 import org.junit.Test;
 

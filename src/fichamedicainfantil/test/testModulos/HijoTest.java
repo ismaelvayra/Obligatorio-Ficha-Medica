@@ -1,4 +1,4 @@
-package fichamedicainfantil.test;
+package fichamedicainfantil.test.testModulos;
 
 import static org.junit.Assert.*;
 

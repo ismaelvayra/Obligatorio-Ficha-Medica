@@ -1,4 +1,4 @@
-package fichamedicainfantil.test;
+package fichamedicainfantil.test.testControladores;
 
 import org.junit.Test;
 
