@@ -6,7 +6,9 @@
 package fichamedicainfantil;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,7 +17,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "hijos")
 public class Hijo {
     
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true)
     private int idHijo;
     @DatabaseField
     private String nombreHijo;
@@ -33,8 +35,12 @@ public class Hijo {
     private String anomalias;
     @DatabaseField
     private String patologia;
-    @DatabaseField
+    @DatabaseField(foreign = true)
     private Padre padre;
+    @ForeignCollectionField
+    private ArrayList<Consulta> listaConsultas;
+    @ForeignCollectionField
+    private ArrayList<Vacuna> listaVacunas;
 
     public Hijo() {
     }
@@ -102,5 +108,21 @@ public class Hijo {
 
     public void setPatologia(String patologia) {
         this.patologia = patologia;
+    }
+
+    public ArrayList<Consulta> getListaConsultas() {
+        return listaConsultas;
+    }
+
+    public void setListaConsultas(ArrayList<Consulta> listaConsultas) {
+        this.listaConsultas = listaConsultas;
+    }
+
+    public ArrayList<Vacuna> getListaVacunas() {
+        return listaVacunas;
+    }
+
+    public void setListaVacunas(ArrayList<Vacuna> listaVacunas) {
+        this.listaVacunas = listaVacunas;
     }
 }

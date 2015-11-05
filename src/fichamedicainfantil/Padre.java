@@ -15,7 +15,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "padres")
 public class Padre {
     
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true)
     private int idPadre;
     @DatabaseField
     private String nombrePadre;
@@ -23,7 +23,7 @@ public class Padre {
     private String apellidoPadre;
     @DatabaseField
     private String generoPadre;
-    @DatabaseField
+    @DatabaseField(foreign = true)
     private Hijo hijo;
 
     public Padre() {}

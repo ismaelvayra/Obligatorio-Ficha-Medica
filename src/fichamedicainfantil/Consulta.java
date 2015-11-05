@@ -15,7 +15,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "consultas")
 public class Consulta {
     
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true)
     private int idCounsulta;
     @DatabaseField
     private String titulo;
@@ -25,7 +25,7 @@ public class Consulta {
     private String notas;
     @DatabaseField
     private Long fecha;
-    @DatabaseField
+    @DatabaseField(foreign = true)
     private Hijo hijo;
     @DatabaseField
     private boolean recordatorio;

@@ -15,7 +15,7 @@ import com.j256.ormlite.table.DatabaseTable;
 @DatabaseTable(tableName = "vacunas")
 public class Vacuna {
     
-    @DatabaseField(id = true)
+    @DatabaseField(generatedId = true)
     private int idVacuna;
     @DatabaseField
     private String nombreVacuna;
