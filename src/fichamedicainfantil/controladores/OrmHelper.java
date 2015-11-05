@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
+import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.modelos.Consulta;
 import fichamedicainfantil.modelos.Hijo;
@@ -34,6 +35,11 @@ public class OrmHelper {
         vacunaDao = DaoManager.createDao(connectionSource, Vacuna.class);
         padreDao = DaoManager.createDao(connectionSource, Padre.class);
         hijoDao = DaoManager.createDao(connectionSource, Hijo.class);
+
+        TableUtils.createTable(connectionSource, Consulta.class);
+        TableUtils.createTable(connectionSource, Vacuna.class);
+        TableUtils.createTable(connectionSource, Padre.class);
+        TableUtils.createTable(connectionSource, Hijo.class);
 
     }
 
