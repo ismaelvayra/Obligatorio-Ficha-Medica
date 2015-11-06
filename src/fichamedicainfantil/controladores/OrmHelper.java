@@ -36,10 +36,10 @@ public class OrmHelper {
         padreDao = DaoManager.createDao(connectionSource, Padre.class);
         hijoDao = DaoManager.createDao(connectionSource, Hijo.class);
 
-        TableUtils.createTable(connectionSource, Consulta.class);
-        TableUtils.createTable(connectionSource, Vacuna.class);
-        TableUtils.createTable(connectionSource, Padre.class);
-        TableUtils.createTable(connectionSource, Hijo.class);
+        TableUtils.createTableIfNotExists(connectionSource, Consulta.class);
+        TableUtils.createTableIfNotExists(connectionSource, Vacuna.class);
+        TableUtils.createTableIfNotExists(connectionSource, Padre.class);
+        TableUtils.createTableIfNotExists(connectionSource, Hijo.class);
 
     }
 

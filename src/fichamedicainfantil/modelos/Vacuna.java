@@ -23,6 +23,8 @@ public class Vacuna {
     private String notasVacuna;
     @DatabaseField
     private Long fechaVacuna;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    private Hijo hijo;
 
     public Vacuna() {
     }
@@ -58,5 +60,12 @@ public class Vacuna {
     public void setFechaVacuna(Long fechaVacuna) {
         this.fechaVacuna = fechaVacuna;
     }
-    
+
+    public Hijo getHijo() {
+        return hijo;
+    }
+
+    public void setHijo(Hijo hijo) {
+        this.hijo = hijo;
+    }
 }
