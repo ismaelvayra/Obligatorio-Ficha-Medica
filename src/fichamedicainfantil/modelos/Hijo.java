@@ -9,15 +9,13 @@ import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
-import java.util.ArrayList;
 
 /**
- *
  * @author tano
  */
 @DatabaseTable(tableName = "hijos")
 public class Hijo {
-    
+
     @DatabaseField(generatedId = true)
     private int idHijo;
     @DatabaseField
@@ -45,7 +43,7 @@ public class Hijo {
 
     public Hijo() {
     }
-    
+
 
     public String getNombre() {
         return nombreHijo;

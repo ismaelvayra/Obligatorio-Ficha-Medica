@@ -11,12 +11,11 @@ import com.j256.ormlite.table.DatabaseTable;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 
 /**
- *
  * @author tano
  */
 @DatabaseTable(tableName = "padres")
 public class Padre {
-    
+
     @DatabaseField(generatedId = true)
     private int idPadre;
     @DatabaseField
@@ -28,7 +27,8 @@ public class Padre {
     @DatabaseField(foreign = true)
     private Hijo hijo;
 
-    public Padre() {}
+    public Padre() {
+    }
 
     public int getIdPadre() {
         return idPadre;

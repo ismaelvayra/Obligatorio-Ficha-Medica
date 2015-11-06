@@ -9,12 +9,11 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 /**
- *
  * @author tano
  */
 @DatabaseTable(tableName = "vacunas")
 public class Vacuna {
-    
+
     @DatabaseField(generatedId = true)
     private int idVacuna;
     @DatabaseField

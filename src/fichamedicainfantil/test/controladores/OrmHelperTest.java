@@ -1,12 +1,6 @@
 package fichamedicainfantil.test.controladores;
 
-import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
-import com.j256.ormlite.field.FieldType;
-import com.j256.ormlite.jdbc.JdbcDatabaseConnection;
-import com.j256.ormlite.jdbc.JdbcDatabaseResults;
-import com.j256.ormlite.jdbc.JdbcPooledConnectionSource;
-import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
@@ -15,16 +9,12 @@ import fichamedicainfantil.modelos.Hijo;
 import fichamedicainfantil.modelos.Padre;
 import fichamedicainfantil.modelos.Vacuna;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.sql.*;
+import java.sql.SQLException;
 
-import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
 
 /**

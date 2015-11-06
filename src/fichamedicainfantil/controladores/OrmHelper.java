@@ -64,25 +64,25 @@ public class OrmHelper {
     }
 
     public static ArrayList<Padre> getListaPadres() throws SQLException {
-        return (ArrayList<Padre>)padreDao.queryForAll();
+        return (ArrayList<Padre>) padreDao.queryForAll();
     }
 
     public static ArrayList<Hijo> getListaHijos() throws SQLException {
-        return (ArrayList<Hijo>)hijoDao.queryForAll();
+        return (ArrayList<Hijo>) hijoDao.queryForAll();
     }
 
     public static ArrayList<Consulta> getListaConsultas(HashMap<String, Object> args) throws SQLException {
-        if (args!=null) {
-            return (ArrayList<Consulta>)consultaDao.queryForFieldValues(args);
+        if (args != null) {
+            return (ArrayList<Consulta>) consultaDao.queryForFieldValues(args);
         }
-        return (ArrayList<Consulta>)consultaDao.queryForAll();
+        return (ArrayList<Consulta>) consultaDao.queryForAll();
     }
 
     public static ArrayList<Vacuna> getListaVacunas(HashMap<String, Object> args) throws SQLException {
-        if (args!=null) {
-            return (ArrayList<Vacuna>)vacunaDao.queryForFieldValues(args);
+        if (args != null) {
+            return (ArrayList<Vacuna>) vacunaDao.queryForFieldValues(args);
         }
-        return (ArrayList<Vacuna>)vacunaDao.queryForAll();
+        return (ArrayList<Vacuna>) vacunaDao.queryForAll();
     }
 
     public static ConnectionSource getConnectionSource() {
