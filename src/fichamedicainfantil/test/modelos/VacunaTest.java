@@ -1,8 +1,6 @@
-package fichamedicainfantil.test;
+package fichamedicainfantil.test.modelos;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by tano on 05/11/15.

@@ -5,6 +5,7 @@
  */
 package fichamedicainfantil.modelos;
 
+import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -38,9 +39,9 @@ public class Hijo {
     @DatabaseField(foreign = true)
     private Padre padre;
     @ForeignCollectionField
-    private ArrayList<Consulta> listaConsultas;
+    private ForeignCollection<Consulta> listaConsultas;
     @ForeignCollectionField
-    private ArrayList<Vacuna> listaVacunas;
+    private ForeignCollection<Vacuna> listaVacunas;
 
     public Hijo() {
     }
@@ -110,19 +111,19 @@ public class Hijo {
         this.patologia = patologia;
     }
 
-    public ArrayList<Consulta> getListaConsultas() {
+    public ForeignCollection<Consulta> getListaConsultas() {
         return listaConsultas;
     }
 
-    public void setListaConsultas(ArrayList<Consulta> listaConsultas) {
+    public void setListaConsultas(ForeignCollection<Consulta> listaConsultas) {
         this.listaConsultas = listaConsultas;
     }
 
-    public ArrayList<Vacuna> getListaVacunas() {
+    public ForeignCollection<Vacuna> getListaVacunas() {
         return listaVacunas;
     }
 
-    public void setListaVacunas(ArrayList<Vacuna> listaVacunas) {
+    public void setListaVacunas(ForeignCollection<Vacuna> listaVacunas) {
         this.listaVacunas = listaVacunas;
     }
 }

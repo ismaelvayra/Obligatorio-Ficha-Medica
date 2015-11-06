@@ -10,6 +10,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
 import fichamedicainfantil.modelos.Consulta;
 import fichamedicainfantil.modelos.Hijo;
@@ -37,7 +38,7 @@ public class FichaMedicaInfantil {
     }
     
     private void iniciar() throws SQLException {
-        OrmHelper.InitOrmHelper();
+        OrmHelper.InitOrmHelper(FichaMedicaConsts.Enviroment.PRODUCCION_ENVIROMENT);
     }
     
 }

@@ -27,19 +27,23 @@ public class OrmHelper {
     private static Dao<Hijo, Integer> hijoDao;
     private static Dao<Padre, Integer> padreDao;
 
-    public static void InitOrmHelper() throws SQLException {
+    public static void InitOrmHelper(FichaMedicaConsts.Enviroment enviroment) throws SQLException {
 
-        connectionSource = new JdbcConnectionSource(FichaMedicaConsts.DATABASE_URL);
+        if (enviroment.equals(FichaMedicaConsts.Enviroment.PRODUCCION_ENVIROMENT)) {
+            connectionSource = new JdbcConnectionSource(FichaMedicaConsts.DATABASE_URL);
+        } else {
+            connectionSource = new JdbcConnectionSource(FichaMedicaConsts.DATABASE_TEST_URL);
+        }
 
         consultaDao = DaoManager.createDao(connectionSource, Consulta.class);
         vacunaDao = DaoManager.createDao(connectionSource, Vacuna.class);
         padreDao = DaoManager.createDao(connectionSource, Padre.class);
         hijoDao = DaoManager.createDao(connectionSource, Hijo.class);
 
-        TableUtils.createTable(connectionSource, Consulta.class);
-        TableUtils.createTable(connectionSource, Vacuna.class);
-        TableUtils.createTable(connectionSource, Padre.class);
-        TableUtils.createTable(connectionSource, Hijo.class);
+        TableUtils.createTableIfNotExists(connectionSource, Consulta.class);
+        TableUtils.createTableIfNotExists(connectionSource, Vacuna.class);
+        TableUtils.createTableIfNotExists(connectionSource, Padre.class);
+        TableUtils.createTableIfNotExists(connectionSource, Hijo.class);
 
     }
 
@@ -81,4 +85,23 @@ public class OrmHelper {
         return (ArrayList<Vacuna>)vacunaDao.queryForAll();
     }
 
+    public static ConnectionSource getConnectionSource() {
+        return connectionSource;
+    }
+
+    public static Dao<Consulta, Integer> getConsultaDao() {
+        return consultaDao;
+    }
+
+    public static Dao<Vacuna, Integer> getVacunaDao() {
+        return vacunaDao;
+    }
+
+    public static Dao<Hijo, Integer> getHijoDao() {
+        return hijoDao;
+    }
+
+    public static Dao<Padre, Integer> getPadreDao() {
+        return padreDao;
+    }
 }
