@@ -5,8 +5,10 @@
  */
 package fichamedicainfantil.modelos;
 
+import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import fichamedicainfantil.consts.FichaMedicaConsts;
 
 /**
  *
@@ -21,8 +23,8 @@ public class Padre {
     private String nombrePadre;
     @DatabaseField
     private String apellidoPadre;
-    @DatabaseField
-    private String generoPadre;
+    @DatabaseField(dataType = DataType.ENUM_STRING)
+    private FichaMedicaConsts.GeneroEnum generoPadre;
     @DatabaseField(foreign = true)
     private Hijo hijo;
 
@@ -52,11 +54,11 @@ public class Padre {
         this.apellidoPadre = apellido;
     }
 
-    public String getGenero() {
+    public FichaMedicaConsts.GeneroEnum getGenero() {
         return generoPadre;
     }
 
-    public void setGenero(String genero) {
+    public void setGenero(FichaMedicaConsts.GeneroEnum genero) {
         this.generoPadre = genero;
     }
 
