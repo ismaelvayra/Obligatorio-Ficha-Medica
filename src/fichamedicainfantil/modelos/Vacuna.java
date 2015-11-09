@@ -67,4 +67,9 @@ public class Vacuna {
     public void setHijo(Hijo hijo) {
         this.hijo = hijo;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this.getIdVacuna() == ((Vacuna)obj).getIdVacuna()) || (this.getIdVacuna() != ((Vacuna)obj).getIdVacuna() && (this.getNombreVacuna().equals(((Vacuna)obj).getNombreVacuna())));
+    }
 }

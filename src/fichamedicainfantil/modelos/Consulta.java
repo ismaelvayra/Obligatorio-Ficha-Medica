@@ -22,12 +22,15 @@ public class Consulta {
     private String descripcion;
     @DatabaseField
     private String notas;
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private Long fecha;
-    @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true, canBeNull = false)
     private Hijo hijo;
-    @DatabaseField
+    @DatabaseField(canBeNull = false)
     private boolean recordatorio;
+    @DatabaseField(foreign = true)
+    private Vacuna vacuna;
+
 
     public Consulta() {
     }
@@ -86,5 +89,13 @@ public class Consulta {
 
     public void setRecordatorio(boolean recordatorio) {
         this.recordatorio = recordatorio;
+    }
+
+    public Vacuna getVacuna() {
+        return vacuna;
+    }
+
+    public void setVacuna(Vacuna vacuna) {
+        this.vacuna = vacuna;
     }
 }

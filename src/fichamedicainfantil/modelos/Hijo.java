@@ -126,4 +126,9 @@ public class Hijo {
             return null;
         }
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return (this.getNombre().equals(((Hijo)obj).getNombre())&&this.getApellido().equals(((Hijo)obj).getApellido()));
+    }
 }

@@ -1,14 +1,16 @@
 package fichamedicainfantil.test.modelos;
 
 import fichamedicainfantil.modelos.Consulta;
-import junit.framework.Assert;
+import fichamedicainfantil.modelos.Hijo;
+import fichamedicainfantil.modelos.Vacuna;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
 import java.util.Calendar;
-import java.util.Date;
 
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertTrue;
 import static org.junit.Assert.*;
 
@@ -25,6 +27,8 @@ public class ConsultaTest {
         con.setNotas("Duele mucho.");
         con.setRecordatorio(true);
         con.setTitulo("Vacuna del Dengue.");
+        con.setHijo(new Hijo());
+        con.setVacuna(new Vacuna());
 
         return con;
     }
@@ -46,7 +50,6 @@ public class ConsultaTest {
     public void testGetTitulo() throws Exception {
         Consulta con = creaConsulta();
 
-        assertTrue(con.getTitulo() instanceof String);
         assertEquals(con.getTitulo(), "Vacuna del Dengue.");
     }
 
@@ -58,59 +61,132 @@ public class ConsultaTest {
 
         assertNotNull(cons.getTitulo());
         assertTrue(cons.getTitulo() instanceof String);
-        assertEquals(cons.getTitulo(), "Vacuna del Dengue.");
+        assertEquals(cons.getTitulo(), "Titulo");
     }
 
     @Test
     public void testGetDescripcion() throws Exception {
         Consulta con = creaConsulta();
 
-        assertTrue(con.getDescripcion() instanceof String);
-        assertEquals(con.getDescripcion(), "Vacuna del Dengue.");
+        assertEquals(con.getDescripcion(), "Esta es una consulta");
     }
 
     @Test
     public void testSetDescripcion() throws Exception {
+        Consulta con = new Consulta();
 
+        con.setDescripcion("Consulta test");
+
+        assertEquals(con.getDescripcion(), "Consulta test");
     }
 
     @Test
     public void testGetNotas() throws Exception {
+        Consulta consulta = creaConsulta();
 
+        assertEquals(consulta.getNotas(), "Duele mucho.");
     }
 
     @Test
     public void testSetNotas() throws Exception {
+        Consulta con = new Consulta();
 
+        con.setNotas("No duele");
+
+        assertEquals(con.getNotas(), "No duele");
     }
 
     @Test
     public void testGetFecha() throws Exception {
+        Consulta con = creaConsulta();
 
+        assertNotNull(con.getFecha() );
+        assertTrue(con.getFecha() instanceof Long);
     }
 
     @Test
     public void testSetFecha() throws Exception {
 
+        Calendar cal = Calendar.getInstance();
+        Consulta con = new Consulta();
+        con.setFecha(cal.getTimeInMillis());
+
+        assertNotNull(con.getFecha());
+        assertTrue(con.getFecha() instanceof Long);
+        assertEquals((long)con.getFecha(), cal.getTimeInMillis());
     }
 
     @Test
     public void testGetHijo() throws Exception {
+        Consulta con = creaConsulta();
 
+        assertNotNull(con.getHijo());
+        assertTrue(con.getHijo() instanceof Hijo);
     }
 
     @Test
     public void testSetHijo() throws Exception {
+        Consulta con = new Consulta();
 
+        Hijo hijo = new Hijo();
+
+        hijo.setNombre("Goffredo");
+        hijo.setApellido("Chupete");
+
+        con.setHijo(hijo);
+
+        assertNotNull(con.getHijo());
+        assertTrue(con.getHijo() instanceof Hijo);
+        assertEquals(con.getHijo(), hijo);
     }
 
     @Test
     public void testGetRecordatorio() throws Exception {
+        Consulta con = creaConsulta();
 
+        assertNotNull(con.getRecordatorio());
+        assertTrue(con.getRecordatorio());
     }
 
     @Test
     public void testSetRecordatorio() throws Exception {
+        Consulta con = new Consulta();
 
+        con.setRecordatorio(false);
+        assertNotNull(con.getRecordatorio());
+        assertFalse(con.getRecordatorio());
+
+        con.setRecordatorio(true);
+        assertNotNull(con.getRecordatorio());
+        assertTrue(con.getRecordatorio());
+    }
+
+    @Test
+    public void testSetVacuna() throws Exception {
+        Consulta con = new Consulta();
+        con.setVacuna(null);
+        assertNull(con.getVacuna());
+
+        Vacuna vac = new Vacuna();
+        vac.setHijo(new Hijo());
+        vac.setFechaVacuna(Calendar.getInstance().getTimeInMillis());
+        vac.setNombreVacuna("Test Vacuna");
+        vac.setNotasVacuna("Te testea la vacuna");
+        con.setVacuna(vac);
+        assertNotNull(con.getVacuna());
+        assertTrue(con.getVacuna() instanceof Vacuna);
+        assertEquals(con.getVacuna(), vac);
+
+    }
+
+    @Test
+    public void testGetVacuna() throws Exception {
+        Consulta con = creaConsulta();
+
+        assertNotNull(con.getVacuna());
+        assertTrue(con.getVacuna() instanceof Vacuna);
+
+        con = new Consulta();
+        assertNull(con.getVacuna());
     }
 }
