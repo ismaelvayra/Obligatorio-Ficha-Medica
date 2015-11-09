@@ -18,14 +18,8 @@ import java.util.ArrayList;
  * @author tano
  */
 @DatabaseTable(tableName = "hijos")
-public class Hijo {
+public class Hijo extends Persona {
 
-    @DatabaseField(generatedId = true)
-    private int idHijo;
-    @DatabaseField
-    private String nombreHijo;
-    @DatabaseField
-    private String apellidoHijo;
     @DatabaseField
     private float peso;
     @DatabaseField
@@ -42,27 +36,8 @@ public class Hijo {
     private ForeignCollection<Consulta> listaConsultas;
     @ForeignCollectionField
     private ForeignCollection<Vacuna> listaVacunas;
-    @DatabaseField(canBeNull = false)
-    private long fechaNacimiento;
 
     public Hijo() {
-    }
-
-
-    public String getNombre() {
-        return nombreHijo;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombreHijo = nombre;
-    }
-
-    public String getApellido() {
-        return apellidoHijo;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellidoHijo = apellido;
     }
 
     public float getPeso() {
@@ -127,14 +102,6 @@ public class Hijo {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    public long getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(long fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
     }
 
     @Override
