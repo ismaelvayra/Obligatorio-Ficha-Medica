@@ -1,107 +1,118 @@
 package fichamedicainfantil.test.modelos;
 
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static org.junit.Assert.*;
+
 /**
- * Created by tano on 05/11/15.
+ * Created by tano on 09/11/15.
  */
 public class HijoTest {
 
-    @org.junit.Test
+    @Before
+    public void setUp() throws Exception {
+
+    }
+
+    @After
+    public void tearDown() throws Exception {
+
+    }
+
+    @Test
     public void testGetNombre() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetNombre() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetApellido() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetApellido() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetPeso() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetPeso() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetTalla() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetTalla() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetPerimetroEncefalico() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetPerimetroEncefalico() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetGrupoSanguino() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetGrupoSanguino() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetAnomalias() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetAnomalias() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetPatologia() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testSetPatologia() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void testGetListaConsultas() throws Exception {
 
     }
 
-    @org.junit.Test
-    public void testSetListaConsultas() throws Exception {
-
-    }
-
-    @org.junit.Test
+    @Test
     public void testGetListaVacunas() throws Exception {
 
     }
 
-    @org.junit.Test
-    public void testSetListaVacunas() throws Exception {
+    @Test
+    public void testGetListaPadres() throws Exception {
 
     }
 }
