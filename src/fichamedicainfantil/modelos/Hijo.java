@@ -8,7 +8,11 @@ package fichamedicainfantil.modelos;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.stmt.query.Exists;
 import com.j256.ormlite.table.DatabaseTable;
+import fichamedicainfantil.controladores.OrmHelper;
+
+import java.util.ArrayList;
 
 /**
  * @author tano
@@ -34,8 +38,6 @@ public class Hijo {
     private String anomalias;
     @DatabaseField
     private String patologia;
-    @DatabaseField(foreign = true)
-    private Padre padre;
     @ForeignCollectionField
     private ForeignCollection<Consulta> listaConsultas;
     @ForeignCollectionField
@@ -113,15 +115,15 @@ public class Hijo {
         return listaConsultas;
     }
 
-    public void setListaConsultas(ForeignCollection<Consulta> listaConsultas) {
-        this.listaConsultas = listaConsultas;
-    }
-
     public ForeignCollection<Vacuna> getListaVacunas() {
         return listaVacunas;
     }
 
-    public void setListaVacunas(ForeignCollection<Vacuna> listaVacunas) {
-        this.listaVacunas = listaVacunas;
+    public ArrayList<Padre> getListaPadres() {
+        try {
+            return OrmHelper.getListaPadresPorHijo(this);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }

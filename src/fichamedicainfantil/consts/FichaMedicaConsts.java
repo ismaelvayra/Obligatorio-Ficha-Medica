@@ -17,4 +17,7 @@ public class FichaMedicaConsts {
         MUJER
     }
 
+    public final static String HIJO_ID_FIELD = "hijo_id";
+    public final static String PADRE_ID_FIELD = "padre_id";
+
 }
