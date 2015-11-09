@@ -29,6 +29,8 @@ public class Padre {
     private FichaMedicaConsts.GeneroEnum generoPadre;
     @DatabaseField(foreign = true)
     private Hijo hijo;
+    @DatabaseField(canBeNull = false)
+    private long fechaNacimiento;
 
     public Padre() {
     }

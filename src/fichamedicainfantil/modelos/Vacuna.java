@@ -8,6 +8,8 @@ package fichamedicainfantil.modelos;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.util.Calendar;
+
 /**
  * @author tano
  */
@@ -24,6 +26,8 @@ public class Vacuna {
     private Long fechaVacuna;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Hijo hijo;
+    @DatabaseField
+    private int diasLuegoDeNacimiento;
 
     public Vacuna() {
     }
@@ -71,5 +75,19 @@ public class Vacuna {
     @Override
     public boolean equals(Object obj) {
         return (this.getIdVacuna() == ((Vacuna)obj).getIdVacuna()) || (this.getIdVacuna() != ((Vacuna)obj).getIdVacuna() && (this.getNombreVacuna().equals(((Vacuna)obj).getNombreVacuna())));
+    }
+
+    public int getDiasLuegoDeNacimiento() {
+        return diasLuegoDeNacimiento;
+    }
+
+    public void setDiasLuegoDeNacimiento(int diasLuegoDeNacimiento) {
+        this.diasLuegoDeNacimiento = diasLuegoDeNacimiento;
+        Long fechaNacimiento = this.getHijo().getFechaNacimiento();
+
+        Calendar c = Calendar.getInstance();
+        c.setTimeInMillis(fechaNacimiento);
+        c.add(Calendar.DATE, this.diasLuegoDeNacimiento);
+        setFechaVacuna(c.getTimeInMillis());
     }
 }

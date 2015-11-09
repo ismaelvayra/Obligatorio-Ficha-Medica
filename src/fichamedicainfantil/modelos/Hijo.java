@@ -42,6 +42,8 @@ public class Hijo {
     private ForeignCollection<Consulta> listaConsultas;
     @ForeignCollectionField
     private ForeignCollection<Vacuna> listaVacunas;
+    @DatabaseField(canBeNull = false)
+    private long fechaNacimiento;
 
     public Hijo() {
     }
@@ -125,6 +127,14 @@ public class Hijo {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public long getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(long fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
 
     @Override
