@@ -9,6 +9,9 @@ import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import fichamedicainfantil.consts.FichaMedicaConsts;
+import fichamedicainfantil.controladores.OrmHelper;
+
+import java.util.ArrayList;
 
 /**
  * @author tano
@@ -68,5 +71,13 @@ public class Padre {
 
     public void setHijo(Hijo hijo) {
         this.hijo = hijo;
+    }
+
+    public ArrayList<Hijo> getListaHijos() {
+        try {
+            return OrmHelper.getListaHijosPorPadre(this);
+        } catch (Exception e) {
+            return null;
+        }
     }
 }
