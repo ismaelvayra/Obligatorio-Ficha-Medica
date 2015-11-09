@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 /**
  * Created by tano on 09/11/15.
  */
-public class HijoTest {
+public class ChicoTest {
 
     @Before
     public void setUp() throws Exception {

@@ -5,8 +5,8 @@ import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
 import fichamedicainfantil.modelos.Consulta;
-import fichamedicainfantil.modelos.Hijo;
-import fichamedicainfantil.modelos.Padre;
+import fichamedicainfantil.modelos.Chico;
+import fichamedicainfantil.modelos.PadreTutor;
 import fichamedicainfantil.modelos.Vacuna;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -27,8 +27,8 @@ public class OrmHelperTest {
         OrmHelper.InitOrmHelper(FichaMedicaConsts.Enviroment.TEST_ENVIROMENT);
 
         assertNotNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Consulta.class));
-        assertNotNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Hijo.class));
-        assertNotNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Padre.class));
+        assertNotNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Chico.class));
+        assertNotNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), PadreTutor.class));
         assertNotNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Vacuna.class));
     }
 
@@ -37,15 +37,15 @@ public class OrmHelperTest {
         try {
 
             TableUtils.dropTable(OrmHelper.getConnectionSource(), Consulta.class, false);
-            TableUtils.dropTable(OrmHelper.getConnectionSource(), Hijo.class, false);
-            TableUtils.dropTable(OrmHelper.getConnectionSource(), Padre.class, false);
+            TableUtils.dropTable(OrmHelper.getConnectionSource(), Chico.class, false);
+            TableUtils.dropTable(OrmHelper.getConnectionSource(), PadreTutor.class, false);
             TableUtils.dropTable(OrmHelper.getConnectionSource(), Vacuna.class, false);
 
             DaoManager.clearDaoCache();
 
             assertNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Consulta.class));
-            assertNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Hijo.class));
-            assertNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Padre.class));
+            assertNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Chico.class));
+            assertNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), PadreTutor.class));
             assertNull(DaoManager.lookupDao(OrmHelper.getConnectionSource(), Vacuna.class));
 
         } catch (SQLException e) {

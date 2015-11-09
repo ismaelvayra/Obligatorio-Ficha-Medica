@@ -13,11 +13,11 @@ public class FichaMedicaConsts {
         PRODUCCION_ENVIROMENT
     }
     public enum GeneroEnum {
-        HOMBRE,
-        MUJER
+        MASCULINO,
+        FEMENINO
     }
 
-    public final static String HIJO_ID_FIELD = "hijo_id";
-    public final static String PADRE_ID_FIELD = "padre_id";
+    public final static String CHICO_ID_FIELD = "hijo_id";
+    public final static String PADRE_TUTOR_ID_FIELD = "padre_id";
 
 }

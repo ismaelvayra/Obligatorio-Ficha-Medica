@@ -25,7 +25,7 @@ public class Consulta {
     @DatabaseField(canBeNull = false)
     private Long fecha;
     @DatabaseField(foreign = true, canBeNull = false)
-    private Hijo hijo;
+    private Chico chico;
     @DatabaseField(canBeNull = false)
     private boolean recordatorio;
     @DatabaseField(foreign = true)
@@ -75,12 +75,12 @@ public class Consulta {
         this.fecha = fecha;
     }
 
-    public Hijo getHijo() {
-        return hijo;
+    public Chico getChico() {
+        return chico;
     }
 
-    public void setHijo(Hijo hijo) {
-        this.hijo = hijo;
+    public void setChico(Chico chico) {
+        this.chico = chico;
     }
 
     public boolean getRecordatorio() {

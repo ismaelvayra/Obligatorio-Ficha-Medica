@@ -8,7 +8,6 @@ package fichamedicainfantil.modelos;
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
-import com.j256.ormlite.stmt.query.Exists;
 import com.j256.ormlite.table.DatabaseTable;
 import fichamedicainfantil.controladores.OrmHelper;
 
@@ -18,7 +17,7 @@ import java.util.ArrayList;
  * @author tano
  */
 @DatabaseTable(tableName = "hijos")
-public class Hijo extends Persona {
+public class Chico extends Persona {
 
     @DatabaseField
     private float peso;
@@ -37,7 +36,7 @@ public class Hijo extends Persona {
     @ForeignCollectionField
     private ForeignCollection<Vacuna> listaVacunas;
 
-    public Hijo() {
+    public Chico() {
     }
 
     public float getPeso() {
@@ -96,7 +95,7 @@ public class Hijo extends Persona {
         return listaVacunas;
     }
 
-    public ArrayList<Padre> getListaPadres() {
+    public ArrayList<PadreTutor> getListaPadres() {
         try {
             return OrmHelper.getListaPadresPorHijo(this);
         } catch (Exception e) {
@@ -106,6 +105,6 @@ public class Hijo extends Persona {
 
     @Override
     public boolean equals(Object obj) {
-        return (this.getNombre().equals(((Hijo)obj).getNombre())&&this.getApellido().equals(((Hijo)obj).getApellido()));
+        return (this.getNombre().equals(((Chico)obj).getNombre())&&this.getApellido().equals(((Chico)obj).getApellido()));
     }
 }

@@ -24,9 +24,9 @@ public class OrmHelper {
 
     private static Dao<Consulta, Integer> consultaDao;
     private static Dao<Vacuna, Integer> vacunaDao;
-    private static Dao<Hijo, Integer> hijoDao;
-    private static Dao<Padre, Integer> padreDao;
-    private static Dao<PadreHijo, Integer> padreHijoDao;
+    private static Dao<Chico, Integer> hijoDao;
+    private static Dao<PadreTutor, Integer> padreDao;
+    private static Dao<PadreTutorChico, Integer> padreHijoDao;
 
     public static void InitOrmHelper(FichaMedicaConsts.Enviroment enviroment) throws SQLException {
 
@@ -38,24 +38,24 @@ public class OrmHelper {
 
         consultaDao = DaoManager.createDao(connectionSource, Consulta.class);
         vacunaDao = DaoManager.createDao(connectionSource, Vacuna.class);
-        padreDao = DaoManager.createDao(connectionSource, Padre.class);
-        hijoDao = DaoManager.createDao(connectionSource, Hijo.class);
-        padreHijoDao = DaoManager.createDao(connectionSource, PadreHijo.class);
+        padreDao = DaoManager.createDao(connectionSource, PadreTutor.class);
+        hijoDao = DaoManager.createDao(connectionSource, Chico.class);
+        padreHijoDao = DaoManager.createDao(connectionSource, PadreTutorChico.class);
 
         TableUtils.createTableIfNotExists(connectionSource, Consulta.class);
         TableUtils.createTableIfNotExists(connectionSource, Vacuna.class);
-        TableUtils.createTableIfNotExists(connectionSource, Padre.class);
-        TableUtils.createTableIfNotExists(connectionSource, Hijo.class);
-        TableUtils.createTableIfNotExists(connectionSource, PadreHijo.class);
+        TableUtils.createTableIfNotExists(connectionSource, PadreTutor.class);
+        TableUtils.createTableIfNotExists(connectionSource, Chico.class);
+        TableUtils.createTableIfNotExists(connectionSource, PadreTutorChico.class);
 
     }
 
-    public static void agregarPadre(Padre padre) throws SQLException {
-        padreDao.create(padre);
+    public static void agregarPadre(PadreTutor padreTutor) throws SQLException {
+        padreDao.create(padreTutor);
     }
 
-    public static void agregarHijo(Hijo hijo) throws SQLException {
-        hijoDao.create(hijo);
+    public static void agregarHijo(Chico chico) throws SQLException {
+        hijoDao.create(chico);
     }
 
     public static void agregarConsulta(Consulta consulta) throws SQLException {
@@ -66,12 +66,12 @@ public class OrmHelper {
         vacunaDao.create(vacuna);
     }
 
-    public static ArrayList<Padre> getListaPadres() throws SQLException {
-        return (ArrayList<Padre>) padreDao.queryForAll();
+    public static ArrayList<PadreTutor> getListaPadres() throws SQLException {
+        return (ArrayList<PadreTutor>) padreDao.queryForAll();
     }
 
-    public static ArrayList<Hijo> getListaHijos() throws SQLException {
-        return (ArrayList<Hijo>) hijoDao.queryForAll();
+    public static ArrayList<Chico> getListaHijos() throws SQLException {
+        return (ArrayList<Chico>) hijoDao.queryForAll();
     }
 
     public static ArrayList<Consulta> getListaConsultas(HashMap<String, Object> args) throws SQLException {
@@ -100,52 +100,52 @@ public class OrmHelper {
         return vacunaDao;
     }
 
-    public static Dao<Hijo, Integer> getHijoDao() {
+    public static Dao<Chico, Integer> getHijoDao() {
         return hijoDao;
     }
 
-    public static Dao<Padre, Integer> getPadreDao() {
+    public static Dao<PadreTutor, Integer> getPadreDao() {
         return padreDao;
     }
 
-    public static ArrayList<Padre> getListaPadresPorHijo(Hijo hijo) throws SQLException {
-        PreparedQuery<Padre> prepQuery = queryPadrePorHijo();
+    public static ArrayList<PadreTutor> getListaPadresPorHijo(Chico chico) throws SQLException {
+        PreparedQuery<PadreTutor> prepQuery = queryPadrePorHijo();
 
-        prepQuery.setArgumentHolderValue(0, hijo);
-        return (ArrayList<Padre>)padreDao.query(prepQuery);
+        prepQuery.setArgumentHolderValue(0, chico);
+        return (ArrayList<PadreTutor>)padreDao.query(prepQuery);
     }
 
-    public static ArrayList<Hijo> getListaHijosPorPadre(Padre padre) throws SQLException {
-        PreparedQuery<Hijo> prepQuery = queryHijoPorPadre();
+    public static ArrayList<Chico> getListaHijosPorPadre(PadreTutor padreTutor) throws SQLException {
+        PreparedQuery<Chico> prepQuery = queryHijoPorPadre();
 
-        prepQuery.setArgumentHolderValue(0, padre);
-        return (ArrayList<Hijo>)hijoDao.query(prepQuery);
+        prepQuery.setArgumentHolderValue(0, padreTutor);
+        return (ArrayList<Chico>)hijoDao.query(prepQuery);
     }
 
-    public static PreparedQuery<Hijo> queryHijoPorPadre() throws SQLException {
-        QueryBuilder<PadreHijo, Integer> padreHijoQ = padreHijoDao.queryBuilder();
+    public static PreparedQuery<Chico> queryHijoPorPadre() throws SQLException {
+        QueryBuilder<PadreTutorChico, Integer> padreHijoQ = padreHijoDao.queryBuilder();
 
-        padreHijoQ.selectColumns(FichaMedicaConsts.PADRE_ID_FIELD);
+        padreHijoQ.selectColumns(FichaMedicaConsts.PADRE_TUTOR_ID_FIELD);
         SelectArg padreSelectArg = new SelectArg();
 
-        padreHijoQ.where().eq(FichaMedicaConsts.HIJO_ID_FIELD, padreSelectArg);
+        padreHijoQ.where().eq(FichaMedicaConsts.CHICO_ID_FIELD, padreSelectArg);
 
-        QueryBuilder<Hijo, Integer> hijoQ = hijoDao.queryBuilder();
+        QueryBuilder<Chico, Integer> hijoQ = hijoDao.queryBuilder();
 
         hijoQ.where().in("id", padreHijoQ);
 
         return hijoQ.prepare();
     }
 
-    public static PreparedQuery<Padre> queryPadrePorHijo() throws SQLException {
-        QueryBuilder<PadreHijo, Integer> padreHijoQ = padreHijoDao.queryBuilder();
+    public static PreparedQuery<PadreTutor> queryPadrePorHijo() throws SQLException {
+        QueryBuilder<PadreTutorChico, Integer> padreHijoQ = padreHijoDao.queryBuilder();
 
-        padreHijoQ.selectColumns(FichaMedicaConsts.HIJO_ID_FIELD);
+        padreHijoQ.selectColumns(FichaMedicaConsts.CHICO_ID_FIELD);
         SelectArg hijoSelectArg = new SelectArg();
 
-        padreHijoQ.where().eq(FichaMedicaConsts.PADRE_ID_FIELD, hijoSelectArg);
+        padreHijoQ.where().eq(FichaMedicaConsts.PADRE_TUTOR_ID_FIELD, hijoSelectArg);
 
-        QueryBuilder<Padre, Integer> padreQ = padreDao.queryBuilder();
+        QueryBuilder<PadreTutor, Integer> padreQ = padreDao.queryBuilder();
 
         padreQ.where().in("id", padreHijoQ);
 

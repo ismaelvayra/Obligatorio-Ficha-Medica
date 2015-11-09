@@ -25,7 +25,7 @@ public class Vacuna {
     @DatabaseField
     private Long fechaVacuna;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private Hijo hijo;
+    private Chico chico;
     @DatabaseField
     private int diasLuegoDeNacimiento;
 
@@ -64,12 +64,12 @@ public class Vacuna {
         this.fechaVacuna = fechaVacuna;
     }
 
-    public Hijo getHijo() {
-        return hijo;
+    public Chico getChico() {
+        return chico;
     }
 
-    public void setHijo(Hijo hijo) {
-        this.hijo = hijo;
+    public void setChico(Chico chico) {
+        this.chico = chico;
     }
 
     @Override
@@ -83,7 +83,7 @@ public class Vacuna {
 
     public void setDiasLuegoDeNacimiento(int diasLuegoDeNacimiento) {
         this.diasLuegoDeNacimiento = diasLuegoDeNacimiento;
-        Long fechaNacimiento = this.getHijo().getFechaNacimiento();
+        Long fechaNacimiento = this.getChico().getFechaNacimiento();
 
         Calendar c = Calendar.getInstance();
         c.setTimeInMillis(fechaNacimiento);

@@ -1,9 +1,8 @@
 package fichamedicainfantil.test.modelos;
 
 import fichamedicainfantil.modelos.Consulta;
-import fichamedicainfantil.modelos.Hijo;
+import fichamedicainfantil.modelos.Chico;
 import fichamedicainfantil.modelos.Vacuna;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.lang.reflect.Method;
@@ -27,7 +26,7 @@ public class ConsultaTest {
         con.setNotas("Duele mucho.");
         con.setRecordatorio(true);
         con.setTitulo("Vacuna del Dengue.");
-        con.setHijo(new Hijo());
+        con.setChico(new Chico());
         con.setVacuna(new Vacuna());
 
         return con;
@@ -120,24 +119,24 @@ public class ConsultaTest {
     public void testGetHijo() throws Exception {
         Consulta con = creaConsulta();
 
-        assertNotNull(con.getHijo());
-        assertTrue(con.getHijo() instanceof Hijo);
+        assertNotNull(con.getChico());
+        assertTrue(con.getChico() instanceof Chico);
     }
 
     @Test
     public void testSetHijo() throws Exception {
         Consulta con = new Consulta();
 
-        Hijo hijo = new Hijo();
+        Chico chico = new Chico();
 
-        hijo.setNombre("Goffredo");
-        hijo.setApellido("Chupete");
+        chico.setNombre("Goffredo");
+        chico.setApellido("Chupete");
 
-        con.setHijo(hijo);
+        con.setChico(chico);
 
-        assertNotNull(con.getHijo());
-        assertTrue(con.getHijo() instanceof Hijo);
-        assertEquals(con.getHijo(), hijo);
+        assertNotNull(con.getChico());
+        assertTrue(con.getChico() instanceof Chico);
+        assertEquals(con.getChico(), chico);
     }
 
     @Test
@@ -168,7 +167,7 @@ public class ConsultaTest {
         assertNull(con.getVacuna());
 
         Vacuna vac = new Vacuna();
-        vac.setHijo(new Hijo());
+        vac.setChico(new Chico());
         vac.setFechaVacuna(Calendar.getInstance().getTimeInMillis());
         vac.setNombreVacuna("Test Vacuna");
         vac.setNotasVacuna("Te testea la vacuna");
