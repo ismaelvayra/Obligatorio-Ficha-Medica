@@ -9,8 +9,8 @@ import fichamedicainfantil.consts.FichaMedicaConsts;
  */
 public abstract class Persona {
 
-    @DatabaseField(generatedId = true, columnName = "id")
-    private int idPersona;
+    @DatabaseField(id = true)
+    private int cedula;
     @DatabaseField
     private String nombre;
     @DatabaseField
@@ -20,12 +20,12 @@ public abstract class Persona {
     @DatabaseField(canBeNull = false)
     private long fechaNacimiento;
 
-    public int getIdPersona() {
-        return idPersona;
+    public int getCedula() {
+        return cedula;
     }
 
-    public void setIdPersona(int idPersona) {
-        this.idPersona = idPersona;
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
     }
 
     public String getNombre() {
@@ -58,5 +58,10 @@ public abstract class Persona {
 
     public void setFechaNacimiento(long fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getCedula() == ((Persona)obj).getCedula();
     }
 }
