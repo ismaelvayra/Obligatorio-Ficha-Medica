@@ -264,4 +264,11 @@ public class ChicoTest {
         chico.setNombre("Ism7el");
         OrmHelper.agregarPadreTutorChico(padreTutor, chico);
     }
+
+    @Test(expected = InvalidValueException.class)
+    public void testDataErroneaApellidoInvalido()throws Throwable {
+        Chico chico = chicoGenerator();
+        chico.setApellido("V4yra");
+        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
+    }
 }
