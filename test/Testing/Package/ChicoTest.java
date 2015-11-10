@@ -6,6 +6,7 @@ import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
 import fichamedicainfantil.exceptions.DataErrorException;
 import fichamedicainfantil.exceptions.EmptyFieldException;
+import fichamedicainfantil.exceptions.InvalidValueException;
 import fichamedicainfantil.modelos.*;
 import fichamedicainfantil.modelos.clasesJoin.PadreTutorChico;
 import org.junit.*;
@@ -69,6 +70,22 @@ public class ChicoTest {
         OrmHelper.agregarConsulta(consultaUno);
 
         chicoTest = OrmHelper.getChicoDao().queryForId(chicoTest.getCedula());
+    }
+
+    public Chico chicoGenerator() {
+        Chico chico = new Chico();
+        chico.setCedula(41136332);
+        chico.setNombre("Goffredo");
+        chico.setApellido("Papein");
+        chico.setGrupoSanguino("NH21");
+        chico.setAnomalias("Vegetaciones");
+        chico.setPatologia("Colon irritable");
+        chico.setPerimetroEncefalico(20);
+        chico.setPeso(4);
+        chico.setGenero(FichaMedicaConsts.GeneroEnum.MASCULINO);
+        chico.setTalla(60);
+
+        return chico;
     }
 
     @AfterClass
@@ -222,8 +239,29 @@ public class ChicoTest {
     }
 
     @Test(expected = EmptyFieldException.class)
-    public void testDataErronea() throws Throwable {
+    public void testDataErroneaCedulaVacia() throws Throwable {
         Chico chico = new Chico();
+        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
+    }
+
+    @Test(expected = InvalidValueException.class)
+    public void testDataErroneaCedulaInvalidaMenor() throws Throwable {
+        Chico chico = new Chico();
+        chico.setCedula(3);
+        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
+    }
+
+    @Test(expected = InvalidValueException.class)
+    public void testDataErroneaCedulaInvalidaMayor() throws Throwable {
+        Chico chico = new Chico();
+        chico.setCedula(999999999);
+        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
+    }
+
+    @Test(expected = InvalidValueException.class)
+    public void testDataErroneaNombreInvalido()throws Throwable {
+        Chico chico = chicoGenerator();
+        chico.setNombre("Ism7el");
         OrmHelper.agregarPadreTutorChico(padreTutor, chico);
     }
 }

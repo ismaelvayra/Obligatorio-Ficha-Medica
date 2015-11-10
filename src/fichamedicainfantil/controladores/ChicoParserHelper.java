@@ -1,5 +1,6 @@
 package fichamedicainfantil.controladores;
 
+import fichamedicainfantil.Utils.Utils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.exceptions.DataErrorException;
 import fichamedicainfantil.exceptions.EmptyFieldException;
@@ -42,12 +43,16 @@ public class ChicoParserHelper {
         }
     }
 
-    private void controlNombre() {
-
+    private void controlNombre() throws DataErrorException {
+        if (!Utils.tieneSoloLetrasString(chico.getNombre())) {
+            throw new InvalidValueException(FichaMedicaConsts.DATA_NOMBRE, "En nombre solo puede contener letras.");
+        }
     }
 
-    private void controlApellido() {
-
+    private void controlApellido() throws DataErrorException {
+        if (!Utils.tieneSoloLetrasString(chico.getNombre())) {
+            throw new InvalidValueException(FichaMedicaConsts.DATA_NOMBRE, "En apellido solo puede contener letras.");
+        }
     }
 
     private void controlPeso() {
