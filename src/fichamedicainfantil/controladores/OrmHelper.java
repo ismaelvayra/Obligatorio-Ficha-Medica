@@ -54,7 +54,7 @@ public class OrmHelper {
 
     public static void agregarPadreTutorChico(PadreTutor padreTutor, Chico chico) throws SQLException, DataErrorException {
 
-        new ChicoParserHelper(chico);
+        new PersonaParserHelper(chico);
 
         if (padreTutorDao.queryForId(padreTutor.getCedula()) == null) {
             padreTutorDao.create(padreTutor);

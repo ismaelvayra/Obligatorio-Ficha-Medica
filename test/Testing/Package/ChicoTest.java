@@ -4,6 +4,7 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
+import fichamedicainfantil.controladores.PersonaParserHelper;
 import fichamedicainfantil.exceptions.DataErrorException;
 import fichamedicainfantil.exceptions.EmptyFieldException;
 import fichamedicainfantil.exceptions.InvalidValueException;
@@ -238,37 +239,4 @@ public class ChicoTest {
         assertEquals(chicoTest.getListaPadres().get(1), madreTutor);
     }
 
-    @Test(expected = EmptyFieldException.class)
-    public void testDataErroneaCedulaVacia() throws Throwable {
-        Chico chico = new Chico();
-        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
-    }
-
-    @Test(expected = InvalidValueException.class)
-    public void testDataErroneaCedulaInvalidaMenor() throws Throwable {
-        Chico chico = new Chico();
-        chico.setCedula(3);
-        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
-    }
-
-    @Test(expected = InvalidValueException.class)
-    public void testDataErroneaCedulaInvalidaMayor() throws Throwable {
-        Chico chico = new Chico();
-        chico.setCedula(999999999);
-        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
-    }
-
-    @Test(expected = InvalidValueException.class)
-    public void testDataErroneaNombreInvalido()throws Throwable {
-        Chico chico = chicoGenerator();
-        chico.setNombre("Ism7el");
-        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
-    }
-
-    @Test(expected = InvalidValueException.class)
-    public void testDataErroneaApellidoInvalido()throws Throwable {
-        Chico chico = chicoGenerator();
-        chico.setApellido("V4yra");
-        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
-    }
 }
