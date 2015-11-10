@@ -15,7 +15,6 @@ nb-configuration.xml
 # Package Files #
 *.war
 *.ear
-*.iml
 build.xml
 manifest.mf
 
