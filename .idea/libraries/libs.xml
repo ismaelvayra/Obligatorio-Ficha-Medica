@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="libs">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/fichamedicainfantil/libs/ormlite-core-4.49-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/fichamedicainfantil/libs/hamcrest-core-1.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/fichamedicainfantil/libs/junit-4.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/fichamedicainfantil/libs/ormlite-jdbc-4.49-SNAPSHOT.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/fichamedicainfantil/libs/h2-1.4.190.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
