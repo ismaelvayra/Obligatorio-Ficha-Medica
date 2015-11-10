@@ -10,7 +10,9 @@ import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 import fichamedicainfantil.controladores.OrmHelper;
+import fichamedicainfantil.modelos.clasesAbstractas.Persona;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -33,8 +35,6 @@ public class Chico extends Persona {
     private String patologia;
     @ForeignCollectionField
     private ForeignCollection<Consulta> listaConsultas;
-    @ForeignCollectionField
-    private ForeignCollection<Vacuna> listaVacunas;
 
     public Chico() {
     }
@@ -87,12 +87,9 @@ public class Chico extends Persona {
         this.patologia = patologia;
     }
 
-    public ForeignCollection<Consulta> getListaConsultas() {
-        return listaConsultas;
-    }
-
-    public ForeignCollection<Vacuna> getListaVacunas() {
-        return listaVacunas;
+    public ForeignCollection<Consulta> getListaConsultas() throws SQLException {
+        Chico chicoResult = OrmHelper.getChicoDao().queryForId(this.getCedula());
+        return chicoResult.getListaConsultas();
     }
 
     public ArrayList<PadreTutor> getListaPadres() {
@@ -101,10 +98,5 @@ public class Chico extends Persona {
         } catch (Exception e) {
             return null;
         }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return (this.getNombre().equals(((Chico)obj).getNombre())&&this.getApellido().equals(((Chico)obj).getApellido()));
     }
 }

@@ -1,4 +1,4 @@
-package fichamedicainfantil.modelos;
+package fichamedicainfantil.modelos.clasesAbstractas;
 
 import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;

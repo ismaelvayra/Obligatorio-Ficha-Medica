@@ -24,7 +24,7 @@ public class Consulta {
     private String notas;
     @DatabaseField(canBeNull = false)
     private Long fecha;
-    @DatabaseField(foreign = true, canBeNull = false)
+    @DatabaseField(foreign = true, canBeNull = false, foreignAutoRefresh = true, columnName = "chico_id")
     private Chico chico;
     @DatabaseField(canBeNull = false)
     private boolean recordatorio;

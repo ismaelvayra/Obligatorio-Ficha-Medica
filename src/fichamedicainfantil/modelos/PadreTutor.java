@@ -7,6 +7,7 @@ package fichamedicainfantil.modelos;
 
 import com.j256.ormlite.table.DatabaseTable;
 import fichamedicainfantil.controladores.OrmHelper;
+import fichamedicainfantil.modelos.clasesAbstractas.Persona;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
  * @author tano
  */
 @DatabaseTable(tableName = "padres")
-public class PadreTutor extends Persona{
+public class PadreTutor extends Persona {
 
     public PadreTutor() {
     }

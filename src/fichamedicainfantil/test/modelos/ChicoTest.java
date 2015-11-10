@@ -4,13 +4,11 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
-import fichamedicainfantil.modelos.Chico;
-import fichamedicainfantil.modelos.PadreTutor;
-import fichamedicainfantil.modelos.PadreTutorChico;
+import fichamedicainfantil.modelos.*;
 import org.h2.table.Table;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+
+import java.util.Calendar;
 
 import static org.junit.Assert.*;
 
@@ -19,12 +17,13 @@ import static org.junit.Assert.*;
  */
 public class ChicoTest {
 
-    private Chico chicoTest;
-    private PadreTutor padreTutor;
-    private PadreTutor madreTutor;
+    private static Chico chicoTest;
+    private static PadreTutor padreTutor;
+    private static PadreTutor madreTutor;
+    private static Consulta consultaUno;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
         chicoTest = new Chico();
         chicoTest.setCedula(41136332);
         chicoTest.setNombre("Goffredo");
@@ -52,14 +51,24 @@ public class ChicoTest {
         madreTutor.setApellido("Palindroma");
         madreTutor.setGenero(FichaMedicaConsts.GeneroEnum.FEMENINO);
 
+        consultaUno = new Consulta();
+        consultaUno.setTitulo("Consulta1");
+        consultaUno.setRecordatorio(true);
+        consultaUno.setChico(chicoTest);
+        consultaUno.setDescripcion("Consulta1");
+        consultaUno.setFecha(Calendar.getInstance().getTimeInMillis());
+        consultaUno.setNotas("Consulta1");
+        consultaUno.setVacuna(new Vacuna());
+
         OrmHelper.agregarPadre(padreTutor);
         OrmHelper.agregarPadre(madreTutor);
+        OrmHelper.agregarConsulta(consultaUno);
         OrmHelper.agregarRelacionPadreTutorChico(padreTutor, chicoTest);
         OrmHelper.agregarRelacionPadreTutorChico(madreTutor, chicoTest);
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @AfterClass
+    public static void tearDown() throws Exception {
         TableUtils.dropTable(OrmHelper.getConnectionSource(), Chico.class, false);
         TableUtils.dropTable(OrmHelper.getConnectionSource(), PadreTutor.class, false);
         TableUtils.dropTable(OrmHelper.getConnectionSource(), PadreTutorChico.class, false);
@@ -181,12 +190,19 @@ public class ChicoTest {
 
     @Test
     public void testGetListaConsultas() throws Exception {
+        assertTrue(chicoTest.getListaConsultas().size() == 1);
+        
+        Consulta con = new Consulta();
+        con.setTitulo("consulta2");
+        con.setRecordatorio(false);
+        con.setChico(chicoTest);
+        con.setDescripcion("consulta2");
+        con.setFecha(Calendar.getInstance().getTimeInMillis());
+        con.setNotas("consulta2");
 
-    }
+        OrmHelper.agregarConsulta(con);
 
-    @Test
-    public void testGetListaVacunas() throws Exception {
-
+        assertTrue(chicoTest.getListaConsultas().size() == 2);
     }
 
     @Test
