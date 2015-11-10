@@ -22,5 +22,6 @@ public class FichaMedicaConsts {
 
     public final static String DATA_CEDULA = "Cedula";
     public final static String DATA_NOMBRE = "Nombre";
+    public final static String DATA_APELLIDO = "Apellido";
 
 }

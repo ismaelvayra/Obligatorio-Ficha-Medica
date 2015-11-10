@@ -50,8 +50,8 @@ public class ChicoParserHelper {
     }
 
     private void controlApellido() throws DataErrorException {
-        if (!Utils.tieneSoloLetrasString(chico.getNombre())) {
-            throw new InvalidValueException(FichaMedicaConsts.DATA_NOMBRE, "En apellido solo puede contener letras.");
+        if (!Utils.tieneSoloLetrasString(chico.getApellido())) {
+            throw new InvalidValueException(FichaMedicaConsts.DATA_APELLIDO, "En apellido solo puede contener letras.");
         }
     }
 
