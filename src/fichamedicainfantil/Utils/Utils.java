@@ -12,7 +12,7 @@ public class Utils {
     }
 
     public static boolean tieneNumerosString(String texto) {
-        return Pattern.matches("\\d+", texto);
+        return Pattern.matches(".*\\d+.*", texto);
     }
 
 }
