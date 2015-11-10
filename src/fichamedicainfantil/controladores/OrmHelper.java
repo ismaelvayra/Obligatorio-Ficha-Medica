@@ -9,6 +9,7 @@ import com.j256.ormlite.stmt.SelectArg;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
+import fichamedicainfantil.exceptions.DataErrorException;
 import fichamedicainfantil.modelos.*;
 import fichamedicainfantil.modelos.clasesJoin.PadreTutorChico;
 
@@ -51,12 +52,20 @@ public class OrmHelper {
 
     }
 
-    public static void agregarPadre(PadreTutor padreTutor) throws SQLException {
-        padreTutorDao.create(padreTutor);
-    }
+    public static void agregarPadreTutorChico(PadreTutor padreTutor, Chico chico) throws SQLException, DataErrorException {
 
-    public static void agregarHijo(Chico chico) throws SQLException {
-        chicoDao.create(chico);
+        new ChicoParserHelper(chico);
+
+        if (padreTutorDao.queryForId(padreTutor.getCedula()) == null) {
+            padreTutorDao.create(padreTutor);
+        }
+
+        if (chicoDao.queryForId(chico.getCedula()) == null) {
+            chicoDao.create(chico);
+        }
+
+        OrmHelper.agregarRelacionPadreTutorChico(padreTutor, chico);
+
     }
 
     public static void agregarConsulta(Consulta consulta) throws SQLException {
@@ -153,7 +162,7 @@ public class OrmHelper {
         return padreQ.prepare();
     }
 
-    public static void agregarRelacionPadreTutorChico(PadreTutor padreTutor, Chico chico) throws SQLException {
+    private static void agregarRelacionPadreTutorChico(PadreTutor padreTutor, Chico chico) throws SQLException {
         PadreTutorChico padreTutorChico = new PadreTutorChico(padreTutor, chico);
         padreTutorChicoDao.create(padreTutorChico);
     }

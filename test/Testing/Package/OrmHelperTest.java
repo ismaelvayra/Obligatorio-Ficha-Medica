@@ -57,6 +57,7 @@ public class OrmHelperTest {
 
     @Test
     public void testAgregarPadre() throws Exception {
+        PadreTutor padreTutor = new PadreTutor();
 
     }
 

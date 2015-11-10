@@ -4,10 +4,13 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
+import fichamedicainfantil.exceptions.DataErrorException;
+import fichamedicainfantil.exceptions.EmptyFieldException;
 import fichamedicainfantil.modelos.*;
 import fichamedicainfantil.modelos.clasesJoin.PadreTutorChico;
 import org.junit.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -38,7 +41,6 @@ public class ChicoTest {
         chicoTest.setTalla(60);
 
         OrmHelper.InitOrmHelper(FichaMedicaConsts.Enviroment.TEST_ENVIROMENT);
-        OrmHelper.agregarHijo(chicoTest);
 
         padreTutor = new PadreTutor();
         padreTutor.setCedula(35557662);
@@ -52,6 +54,9 @@ public class ChicoTest {
         madreTutor.setApellido("Palindroma");
         madreTutor.setGenero(FichaMedicaConsts.GeneroEnum.FEMENINO);
 
+        OrmHelper.agregarPadreTutorChico(padreTutor, chicoTest);
+        OrmHelper.agregarPadreTutorChico(madreTutor, chicoTest);
+
         consultaUno = new Consulta();
         consultaUno.setTitulo("Consulta1");
         consultaUno.setRecordatorio(true);
@@ -61,11 +66,7 @@ public class ChicoTest {
         consultaUno.setNotas("Consulta1");
         consultaUno.setVacuna(new Vacuna());
 
-        OrmHelper.agregarPadre(padreTutor);
-        OrmHelper.agregarPadre(madreTutor);
         OrmHelper.agregarConsulta(consultaUno);
-        OrmHelper.agregarRelacionPadreTutorChico(padreTutor, chicoTest);
-        OrmHelper.agregarRelacionPadreTutorChico(madreTutor, chicoTest);
 
         chicoTest = OrmHelper.getChicoDao().queryForId(chicoTest.getCedula());
     }
@@ -218,5 +219,11 @@ public class ChicoTest {
         assertTrue(chicoTest.getListaPadres().size() == 2);
         assertTrue(chicoTest.getListaPadres().get(0).equals(padreTutor));
         assertEquals(chicoTest.getListaPadres().get(1), madreTutor);
+    }
+
+    @Test(expected = EmptyFieldException.class)
+    public void testDataErronea() throws Throwable {
+        Chico chico = new Chico();
+        OrmHelper.agregarPadreTutorChico(padreTutor, chico);
     }
 }
