@@ -5,9 +5,10 @@ import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.controladores.OrmHelper;
 import fichamedicainfantil.modelos.*;
-import org.h2.table.Table;
+import fichamedicainfantil.modelos.clasesJoin.PadreTutorChico;
 import org.junit.*;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import static org.junit.Assert.*;
@@ -65,6 +66,8 @@ public class ChicoTest {
         OrmHelper.agregarConsulta(consultaUno);
         OrmHelper.agregarRelacionPadreTutorChico(padreTutor, chicoTest);
         OrmHelper.agregarRelacionPadreTutorChico(madreTutor, chicoTest);
+
+        chicoTest = OrmHelper.getChicoDao().queryForId(chicoTest.getCedula());
     }
 
     @AfterClass
@@ -202,7 +205,12 @@ public class ChicoTest {
 
         OrmHelper.agregarConsulta(con);
 
+
         assertTrue(chicoTest.getListaConsultas().size() == 2);
+
+        ArrayList<Consulta> conLis = new ArrayList<>(chicoTest.getListaConsultas());
+        assertEquals(conLis.get(0), consultaUno);
+        assertEquals(conLis.get(1), con);
     }
 
     @Test

@@ -10,6 +10,7 @@ import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 import fichamedicainfantil.consts.FichaMedicaConsts;
 import fichamedicainfantil.modelos.*;
+import fichamedicainfantil.modelos.clasesJoin.PadreTutorChico;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

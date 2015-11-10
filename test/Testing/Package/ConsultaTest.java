@@ -20,7 +20,7 @@ public class ConsultaTest {
 
     private Consulta creaConsulta() {
         Consulta con = new Consulta();
-        con.setIdCounsulta(1);
+        con.setId(1);
         con.setDescripcion("Esta es una consulta");
         con.setFecha(Calendar.getInstance().getTimeInMillis());
         con.setNotas("Duele mucho.");
@@ -36,13 +36,8 @@ public class ConsultaTest {
     public void testGetIdCounsulta() throws Exception {
         Consulta con = creaConsulta();
 
-        Class<?> c = Class.forName("fichamedicainfantil.modelos.Consulta");
-        Method m = c.getDeclaredMethod("getIdCounsulta");
-        String tipo = m.getReturnType().toString();
-
-        assertNotNull(con.getIdCounsulta());
-        assertEquals(tipo, "int");
-        assertEquals(con.getIdCounsulta(), 1);
+        assertNotNull(con.getId());
+        assertEquals(con.getId(), 1);
     }
 
     @Test
@@ -168,9 +163,9 @@ public class ConsultaTest {
 
         Vacuna vac = new Vacuna();
         vac.setChico(new Chico());
-        vac.setFechaVacuna(Calendar.getInstance().getTimeInMillis());
-        vac.setNombreVacuna("Test Vacuna");
-        vac.setNotasVacuna("Te testea la vacuna");
+        vac.setFecha(Calendar.getInstance().getTimeInMillis());
+        vac.setTitulo("Test Vacuna");
+        vac.setNotas("Te testea la vacuna");
         con.setVacuna(vac);
         assertNotNull(con.getVacuna());
         assertTrue(con.getVacuna() instanceof Vacuna);

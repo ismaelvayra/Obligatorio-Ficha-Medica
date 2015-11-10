@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * @author tano
  */
-@DatabaseTable(tableName = "hijos")
+@DatabaseTable(tableName = "chicos")
 public class Chico extends Persona {
 
     @DatabaseField
@@ -33,7 +33,7 @@ public class Chico extends Persona {
     private String anomalias;
     @DatabaseField
     private String patologia;
-    @ForeignCollectionField
+    @ForeignCollectionField(eager = false)
     private ForeignCollection<Consulta> listaConsultas;
 
     public Chico() {
@@ -87,9 +87,8 @@ public class Chico extends Persona {
         this.patologia = patologia;
     }
 
-    public ForeignCollection<Consulta> getListaConsultas() throws SQLException {
-        Chico chicoResult = OrmHelper.getChicoDao().queryForId(this.getCedula());
-        return chicoResult.getListaConsultas();
+    public ForeignCollection<Consulta> getListaConsultas() {
+        return listaConsultas;
     }
 
     public ArrayList<PadreTutor> getListaPadres() {

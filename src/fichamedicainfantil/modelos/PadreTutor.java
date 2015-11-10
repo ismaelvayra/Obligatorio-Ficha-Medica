@@ -14,7 +14,7 @@ import java.util.ArrayList;
 /**
  * @author tano
  */
-@DatabaseTable(tableName = "padres")
+@DatabaseTable(tableName = "padrestutores")
 public class PadreTutor extends Persona {
 
     public PadreTutor() {
