@@ -1,4 +1,4 @@
-package fichamedicainfantil.test.modelos;
+package Testing.Package;
 
 import fichamedicainfantil.modelos.Consulta;
 import fichamedicainfantil.modelos.Chico;

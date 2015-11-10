@@ -1,4 +1,4 @@
-package fichamedicainfantil.test.controladores;
+package Testing.Package;
 
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.table.TableUtils;

@@ -1,4 +1,4 @@
-package fichamedicainfantil.test.modelos;
+package Testing.Package;
 
 import org.junit.After;
 import org.junit.Before;
